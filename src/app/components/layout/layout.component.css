@@ -1,0 +1,19 @@
+.layout {
+    height: 100%;
+    --text-color: red;
+    display: flex;
+    flex-direction: column;
+    box-sizing: border-box;
+    background-color: green;
+}
+.navbar {
+    flex:0.2;
+
+}
+.main{
+    flex:1;
+    background-color: blue;
+}
+p{ 
+    background: var(--text-color);
+}
