@@ -1,3 +1,10 @@
-:host {
-    background-color: red;
+.container {
+    display: flex;
+    flex:1;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.buttons * {
+margin: 0.5rem;
 }

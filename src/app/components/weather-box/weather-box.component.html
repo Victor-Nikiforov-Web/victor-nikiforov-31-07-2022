@@ -1,0 +1,35 @@
+<mat-card>
+    <mat-card-title-group>
+        <mat-card-title>
+            <div class="title-container">
+                <div>
+                    <mat-icon>favorite_border</mat-icon>
+                </div>
+                <div>
+                    <p>{{currentCity.name}}</p>
+                    <ng-container *ngIf="temperatureUnits | async as unit">
+                        <p *ngIf="unit === 'C'" class="subtext">
+                            {{currentCity.temperature | unitPipe}}</p>
+                        <p *ngIf="unit === 'F'" class="subtext">
+                            {{currentCity.temperature}} F
+                        </p>
+                    </ng-container>
+                </div>
+            </div>
+        </mat-card-title>
+        <mat-icon *ngIf="isFavorite && isFavorite?.length !== 0 " class="icon" clickable (click)="handleFavorite()">
+            favorite
+        </mat-icon>
+        <mat-icon *ngIf="isFavorite?.length == 0 || !isFavorite" class="icon" clickable (click)="handleFavorite()">
+            favorite_border</mat-icon>
+    </mat-card-title-group>
+    <mat-card-content class="center">
+        <h1>{{currentCity.weatherText}}</h1>
+        <div class="feature-weathers">
+            <ng-container *ngFor="let item of futureWeather">
+                <app-sm-weather-box [temperatureUnits]="temperatureUnits" [weather]="item">
+                </app-sm-weather-box>
+            </ng-container>
+        </div>
+    </mat-card-content>
+</mat-card>

@@ -1,0 +1,24 @@
+<div class="container">
+    <ng-container *ngFor="let item of favoritesCities$ | async">
+        <mat-card class="sm-card" (click)="onClick(item)" clickable>
+            <mat-card-title-group>
+                <mat-card-title>{{item.name}}</mat-card-title>
+                <mat-card-subtitle>
+                    <ng-container *ngIf="temperatureUnits$ | async as unit">
+                        <p *ngIf="unit === 'C'" class="subtext">
+                            {{item.temperature | unitPipe}}</p>
+                        <p *ngIf="unit === 'F'" class="subtext">
+                            {{item.temperature}} F
+                        </p>
+                    </ng-container>
+                </mat-card-subtitle>
+            </mat-card-title-group>
+            <mat-card-content>
+                {{item.weatherText}}
+            </mat-card-content>
+            <mat-card-actions>
+                <button mat-raised-button color="warn" (click)="removeItem(item)">Delete</button>
+            </mat-card-actions>
+        </mat-card>
+    </ng-container>
+</div>

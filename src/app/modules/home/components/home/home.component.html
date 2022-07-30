@@ -1,0 +1,17 @@
+<div class="home">
+    <div class="units">
+        <mat-button-toggle-group [value]="temperatureUnits$ | async" (change)="unitChange($event)">
+            <mat-button-toggle value="C">Celsius</mat-button-toggle>
+            <mat-button-toggle value="F">Fahrenheit</mat-button-toggle>
+        </mat-button-toggle-group>
+    </div>
+
+    <app-autocomplete (selectedCity)="getCurrentCity($event)"></app-autocomplete>
+
+    <ng-container *ngIf="currentCity$ | async as currentCity">
+        <app-weather-box [currentCity]="currentCity" [futureWeather]="futureWeather$ | async"
+            [temperatureUnits]="temperatureUnits$" (addFavorite)="manageFavorite($event)"
+            [isFavorite]="checkIfFavorite$ | async">
+        </app-weather-box>
+    </ng-container>
+</div>

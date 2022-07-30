@@ -1,0 +1,14 @@
+<mat-card class="sm-card">
+    <mat-card-title-group>
+        <mat-card-title>{{weather.date | daysPipe}}</mat-card-title>
+        <mat-card-subtitle>
+            <ng-container *ngIf="temperatureUnits | async as unit">
+                <p *ngIf="unit === 'C'" class="subtext">
+                    {{weather.temperature | unitPipe}}</p>
+                <p *ngIf="unit === 'F'" class="subtext">
+                    {{weather.temperature}} F
+                </p>
+            </ng-container>
+        </mat-card-subtitle>
+    </mat-card-title-group>
+</mat-card>
