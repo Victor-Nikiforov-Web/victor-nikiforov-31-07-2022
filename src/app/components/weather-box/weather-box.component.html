@@ -3,9 +3,6 @@
         <mat-card-title>
             <div class="title-container">
                 <div>
-                    <mat-icon>favorite_border</mat-icon>
-                </div>
-                <div>
                     <p>{{currentCity.name}}</p>
                     <ng-container *ngIf="temperatureUnits | async as unit">
                         <p *ngIf="unit === 'C'" class="subtext">

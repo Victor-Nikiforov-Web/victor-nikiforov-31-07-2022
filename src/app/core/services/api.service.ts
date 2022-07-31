@@ -14,7 +14,8 @@ export class ApiService {
     private autocompleteAPI = "http://dataservice.accuweather.com/locations/v1/cities/autocomplete";
     private currentWeatherAPI = "http://dataservice.accuweather.com/currentconditions/v1";
     private futureWeatherAPI = "http://dataservice.accuweather.com/forecasts/v1/daily/5day";
-
+    private locationAPI = "http://dataservice.accuweather.com/locations/v1/cities/geoposition/search";
+    
     getCityAPI(city: string): Observable<any> {
         return this.http.get(`${this.autocompleteAPI}?apikey=${this.API_KEY}&q=${city}`);
     }
@@ -25,5 +26,9 @@ export class ApiService {
 
     getFutureWeather(cityKey: string) {
         return this.http.get(`${this.futureWeatherAPI}/${cityKey}?apikey=${this.API_KEY}`);
+    }
+
+    getByLocation(lat: number, long: number) {
+        return this.http.get(`${this.locationAPI}?apikey=${this.API_KEY}q=${lat}%${long}`);
     }
 }

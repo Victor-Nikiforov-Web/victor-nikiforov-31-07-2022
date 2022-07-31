@@ -17,7 +17,7 @@ export const appReducer = createReducer(initialAppState,
                 checkIfFavorite(state, action) ?
                     removeFromFavorite(state, getIndex(state, action))
                     :
-                    [{ ...action, id: state.favoritesCities.length + 1 }]
+                    [...state.favoritesCities, { ...action }]
         }))
 
 );

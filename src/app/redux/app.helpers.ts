@@ -15,5 +15,5 @@ export function removeFromFavorite(appState: AppState, index: any) {
 }
 
 export function getIndex(appState: AppState, city: CurrentCity): number {
-    return appState.favoritesCities.findIndex(item => item.id == city.id);
+    return appState.favoritesCities.findIndex(item => item.key == city.key);
 }

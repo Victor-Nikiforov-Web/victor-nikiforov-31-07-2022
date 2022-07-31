@@ -43,17 +43,6 @@ export class HomeComponent implements OnInit {
 
     }
 
-    this.getPosition()
-    // I couldn't find how to get location by lat and long
-      .then(res => console.log(res))
-      .catch(err => {
-        this.openSnackBar(err.message)
-        this.getCurrentCity({
-          key: "215854",
-          name: "Tel Aviv"
-        });
-      });
-
       this.getCurrentCity({
         key: "215854",
         name: "Tel Aviv"
@@ -65,6 +54,7 @@ export class HomeComponent implements OnInit {
   openSnackBar(message: string) {
     this._snackBar.open(message, '', { duration: 3000 })
   }
+  
   getPosition(): Promise<any> {
     return new Promise((resolve, reject) => {
       navigator.geolocation.getCurrentPosition(resp => {
